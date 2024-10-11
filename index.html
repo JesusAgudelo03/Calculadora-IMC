@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora IMC</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-[Poppins] bg-sky-50 bg-gradient-to-l from-sky-600 via-teal-400 to-sky-600">
+  <header class="py-8 bg-sky-800">
+    <h1 class="md:text-7xl text-5xl font-bold text-center text-white">Calculadora de IMC</h1>
+  </header>
+  <main class="max-w-6xl mx-auto min-h-screen bg-sky-700/20 py-4">
+  <div class="w-full max-w-md p-6 my-4 bg-white rounded-md shadow-lg space-y-4 mx-auto">
+      <div class="accordion-item">
+        <div id="faqHeader1" class="cursor-pointer flex justify-between items-center bg-sky-700 text-white p-4 rounded-md">
+          <h2 class="text-lg font-semibold">¿Qué es el índice de masa corporal?</h2>
+          <svg id="toggleIcon1" class="w-5 h-5 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+        <div id="faqContent1" class="overflow-hidden transition-all max-h-0 duration-300 bg-gray-100 rounded-md">
+          <p class="text-gray-700 p-2">
+            El índice de masa corporal (IMC) es una medida para evaluar si una persona tiene un peso saludable en relación con su estatura. 
+            El IMC es usado como uno de varios indicadores para evaluar el estado nutricional.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div id="faqHeader2" class="cursor-pointer flex justify-between items-center bg-sky-700 text-white p-4 rounded-md">
+          <h2 class="text-lg font-semibold">¿Cómo se calcula el IMC?</h2>
+          <svg id="toggleIcon2" class="w-5 h-5 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+        <div id="faqContent2" class="overflow-hidden transition-all max-h-0 duration-300 bg-gray-100 rounded-md">
+          <p class="text-gray-700 p-2">
+            El IMC se calcula dividiendo el peso en kilogramos por la estatura en metros al cuadrado (kg/m²).
+          </p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div id="faqHeader3" class="cursor-pointer flex justify-between items-center bg-sky-700 text-white p-4 rounded-md">
+          <h2 class="text-lg font-semibold">¿Cómo se clasifica el IMC?</h2>
+          <svg id="toggleIcon3" class="w-5 h-5 transition-transform transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+        <div id="faqContent3" class="overflow-hidden transition-all max-h-0 duration-300 bg-gray-100 rounded-md">
+          <p class="text-gray-700 p-2">
+            El IMC se clasifica en varias categorías que indican si una persona tiene un peso saludable o no.
+          </p>
+          <img src="images/imc_clasificacion.png" alt="Clasificación del IMC" id="imcImage">
+        </div>
+      </div>
+    </div>
+    <h2 class="bg-sky-800/80 md:mx-20 py-2 text-center text-lg md:text-2xl text-white font-bold my-8">Para calcular su índice de masa corporal, ingrese su peso y estatura.</h2>
+      <!-- Calculadora -->
+    <div class="mx-auto bg-white px-12 py-6 max-w-xl rounded-lg shadow-lg">
+      <div class="border-2 border-sky-700 p-6 rounded-lg shadow">
+        <div class="p-2 flex justify-between items-center space-x-4">
+          <label for="peso" class="text-lg font-semibold text-sky-800">Peso (Kg):</label>
+          <input id="peso" type="number" step="any" class="border border-sky-700 rounded-md p-2 w-3/5 focus:ring-2 focus:ring-sky-500 focus:border-transparent">
+        </div>
+        <div class="p-2 flex justify-between items-center space-x-4 mt-4">
+          <label for="estatura" class="text-lg font-semibold text-sky-800">Estatura (m):</label>
+          <input id="estatura" type="number" step="any" class="border border-sky-700 rounded-md p-2 w-3/5 focus:ring-2 focus:ring-sky-500 focus:border-transparent">
+        </div>
+      </div>
+      <div class=" mx-auto flex items-center justify-center">
+        <a onclick="calcularIMC()"  class="cursor-pointer mt-6 bg-sky-800 text-white font-semibold py-2 px-6 rounded-md hover:bg-sky-700 transition duration-300 ease-in-out">
+          Calcular IMC
+        </a>
+      </div>
+    </div>
+    <div id="resultado" class="mx-auto bg-white max-w-xl p-12 my-20 rounded-lg shadow-lg">
+      <h3 class="text-center text-2xl font-bold text-sky-900">Resultados</h3>
+      <div class="resultado mt-4 text-center text-sky-800 text-lg underline"></div>
+      <div class="dieta mt-4 text-sky-800 text-lg "></div>
+      <div class="resultado2 "></div>
+      <div id="modal" class="fixed inset-0 hidden bg-gray-800 bg-opacity-75 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
+          <h2 class="text-2xl font-bold text-sky-800 mb-4">Error</h2>
+          <p id="modalMessage" class="mb-6 text-gray-700">El peso y la estatura deben ser mayores que 0.</p>
+          <button onclick="closeModal()" class="bg-sky-800 text-white py-2 px-4 rounded-md hover:bg-sky-700 transition">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>    
+  </main>
+  <footer class="bg-sky-900 h-12 flex items-center justify-center">
+    <div>
+      <p class="text-center text-white">Índice de masa corporal - Jesús Agudelo </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
